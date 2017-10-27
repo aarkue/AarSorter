@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TitledPane collapsible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="420.0" text="Array-Sorter">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0">
+                     <children>
+                        <AnchorPane prefHeight="138.0" prefWidth="509.0">
+                           <children>
+                              <GridPane layoutX="227.0" layoutY="1.0" prefHeight="150.0" prefWidth="189.0">
+                                 <children>
+                                    <RadioButton fx:id="genRadio" mnemonicParsing="false" onAction="#switchGenMode" selected="true" text="Generate Random Numbers" textOverrun="WORD_ELLIPSIS" wrapText="true" />
+                                    <TextField fx:id="ranAmount" promptText="Amount" GridPane.rowIndex="1" />
+                                    <TextField fx:id="ranMin" promptText="Min" GridPane.rowIndex="2" />
+                                    <TextField fx:id="ranMax" promptText="Max" GridPane.rowIndex="3" />
+                                    <RadioButton fx:id="entRadio" mnemonicParsing="false" onAction="#switchGenMode" text="Enter Numbers" GridPane.rowIndex="4" />
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="27.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                              <ComboBox fx:id="selAlg" layoutX="1.0" layoutY="118.0" prefHeight="29.0" prefWidth="138.0" />
+                              <Label layoutX="5.0" layoutY="-6.0" prefHeight="94.0" prefWidth="221.0" wrapText="true" />
+                              <Label layoutX="5.0" layoutY="20.0" prefHeight="76.0" prefWidth="221.0" text="1. Enter Numbers Beneath Or &#9;&#10;Generate Random.&#10;2. Choose A Sorting-Algorithm&#10;3. Click &quot;Sort!&quot;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
+                              <Button fx:id="clear" disable="true" layoutX="139.0" layoutY="118.0" mnemonicParsing="false" onAction="#clearNumb" prefHeight="29.0" prefWidth="63.0" text="Clear" />
+                              <TextField fx:id="enterNumb" disable="true" layoutX="1.0" layoutY="147.0" prefHeight="25.0" prefWidth="81.0" />
+                              <Button fx:id="add" disable="true" layoutX="80.0" layoutY="147.0" mnemonicParsing="false" onAction="#addNumb" prefHeight="29.0" prefWidth="61.0" text="Add" />
+                              <Button fx:id="del" disable="true" layoutX="139.0" layoutY="147.0" mnemonicParsing="false" onAction="#delNumb" prefHeight="29.0" prefWidth="63.0" text="Delete" />
+                              <Button layoutX="227.0" layoutY="150.0" mnemonicParsing="false" onAction="#sort" prefHeight="25.0" prefWidth="190.0" text="Sort!">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                        <BorderPane>
+                           <bottom>
+                              <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <BorderPane prefHeight="50.0" prefWidth="420.0">
+                                       <left>
+                                          <Label fx:id="status" text="Ready" textFill="#2d8a11" BorderPane.alignment="CENTER">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </left>
+                                       <right>
+                                          <Label fx:id="time" text="Time: 000000ms" textFill="#2d8a11" BorderPane.alignment="CENTER">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </right>
+                                       <top>
+                                          <ProgressBar fx:id="progress" prefHeight="18.0" prefWidth="600.0" progress="0.0" BorderPane.alignment="CENTER" />
+                                       </top>
+                                    </BorderPane>
+                                 </children>
+                              </FlowPane>
+                           </bottom>
+                           <left>
+                              <GridPane gridLinesVisible="true" prefHeight="200.0" prefWidth="420.0" snapToPixel="false" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <ListView fx:id="unsortedNumb" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                    <ListView fx:id="sortedNumb" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label text="Numbers:">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Sorted Numbers:" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </left>
+                        </BorderPane>
+                     </children>
+                  </FlowPane>
+               </children>
+            </AnchorPane>
+         </content>
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TitledPane>
+   </children>
+</AnchorPane>
