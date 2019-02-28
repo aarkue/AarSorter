@@ -87,7 +87,7 @@ private static int countSmallerOnes(int[] array, int index) throws Exception{
             counter++;
         }
         if(array[index]== array[i]){
-            throw new Exception("Array cannot be sorted as some elements are present more than ones!");
+            throw new Exception("Array cannot be sorted as some elements are present more than once!");
         }
     }
     return counter;
